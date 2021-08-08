@@ -1,0 +1,18 @@
+//Question 1
+mysql> select count(employees.emp_no), employees.birth_date, titles.title from employees
+    -> inner join titles on titles.emp_no = employees.emp_no
+    -> where employees.birth_date > '1965-01-01'
+    -> group by titles.title;
+
+//Question 2
+mysql> select d.dept_name as "department", avg(s.salary) as "average salary" from departments d
+    -> inner join dept_emp de on de.dept_no = d.dept_no
+    -> inner join salaries s on s.emp_no = de.emp_no
+    -> group by titles.title;
+
+//Question 3
+mysql> select d.dept_name as "department", sum(s.salary) as "Total Salary" from departments d
+    -> inner join dept_emp de on de.dept_no = d.dept_no
+    -> inner join salaries s on s.emp_no = de.emp_no
+    -> where s.from_date > '1990-01-01' and s.to_date < '1992-01-01'
+    -> group by d.dept_name;
